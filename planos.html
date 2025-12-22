@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Explore English | Planos</title>
+<meta name="description" content="Escolha seu plano na Explore English: Curso Base, Curso + Conversação ou Mentoria Profissional." />
+
+<style>
+  :root{
+    --teal:#007C91;
+    --orange:#F37021;
+    --bg:#F6FAFB;
+    --text:#0B1F26;
+    --muted:#4B5B60;
+    --card:#FFFFFF;
+    --border: rgba(0, 124, 145, 0.18);
+    --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    color:var(--text);
+    background:
+      radial-gradient(1200px 600px at 10% 0%, rgba(0,124,145,0.12), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, rgba(243,112,33,0.12), transparent 55%),
+      var(--bg);
+    line-height:1.35;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  .container{ width:min(1100px, 92vw); margin:0 auto; }
+
+  header{
+    padding: 34px 0 12px;
+  }
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:14px;
+    text-align:center;
+  }
+  .logo{
+    max-width:220px;
+    width: 70%;
+    height:auto;
+  }
+  h1{
+    margin: 0;
+    font-size: clamp(26px, 3.4vw, 42px);
+    letter-spacing:-0.6px;
+    line-height:1.08;
+  }
+  .sub{
+    margin: 0;
+    max-width: 78ch;
+    color: var(--muted);
+    font-size: clamp(14px, 1.4vw, 18px);
+  }
+
+  .pill-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin: 16px 0 0;
+    justify-content:center;
+  }
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.70);
+    backdrop-filter: blur(6px);
+    font-weight:700;
+    color: var(--text);
+    font-size: 13px;
+  }
+  .dot{
+    width:10px; height:10px; border-radius:999px;
+    background: var(--orange);
+    box-shadow: 0 0 0 3px rgba(243,112,33,0.18);
+  }
+
+  /* Cards */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:18px;
+    margin: 22px 0 18px;
+  }
+  @media (max-width: 980px){
+    .grid{ grid-template-columns: 1fr; }
+  }
+
+  .card{
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    position:relative;
+  }
+  .card .bar{
+    height: 8px;
+    background: linear-gradient(90deg, var(--teal), rgba(0,124,145,0.25));
+  }
+  .card.pro .bar{
+    background: linear-gradient(90deg, var(--orange), rgba(243,112,33,0.25));
+  }
+  .card.premium .bar{
+    background: linear-gradient(90deg, #111827, rgba(17,24,39,0.2));
+  }
+
+  .card-inner{ padding: 20px 18px 18px; }
+  .label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-weight:900;
+    letter-spacing:-0.2px;
+    margin: 0 0 6px;
+    font-size: 18px;
+  }
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    padding:6px 10px;
+    border-radius:999px;
+    font-size: 12px;
+    font-weight:800;
+    border: 1px solid var(--border);
+    color: var(--teal);
+    background: rgba(0,124,145,0.08);
+  }
+  .card.pro .tag{
+    border-color: rgba(243,112,33,0.30);
+    color: var(--orange);
+    background: rgba(243,112,33,0.10);
+  }
+  .card.premium .tag{
+    border-color: rgba(17,24,39,0.25);
+    color: #111827;
+    background: rgba(17,24,39,0.06);
+  }
+
+  .price{
+    margin: 14px 0 6px;
+    font-size: 30px;
+    font-weight: 950;
+    letter-spacing:-0.7px;
+    line-height:1;
+  }
+  .installments{
+    margin:0 0 12px;
+    color: var(--muted);
+    font-weight:700;
+    font-size: 14px;
+  }
+
+  ul{
+    margin: 0;
+    padding: 0 0 0 18px;
+    color:var(--muted);
+  }
+  li{ margin: 10px 0; }
+  .highlight{
+    color: var(--text);
+    font-weight: 900;
+  }
+  .note{
+    margin-top: 12px;
+    padding: 12px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(0,124,145,0.06);
+    color: var(--text);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .card.pro .note{
+    border-color: rgba(243,112,33,0.25);
+    background: rgba(243,112,33,0.08);
+  }
+  .card.premium .note{
+    border-color: rgba(17,24,39,0.18);
+    background: rgba(17,24,39,0.06);
+  }
+
+  .btn-row{ margin-top: 16px; }
+  .btn{
+    width:100%;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    padding: 14px 14px;
+    border-radius: 14px;
+    font-weight: 900;
+    border: none;
+    cursor:pointer;
+    user-select:none;
+    transition: transform .08s ease, opacity .12s ease;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .btn.primary{
+    background: linear-gradient(135deg, var(--teal), #0aa2b6);
+    color:white;
+    box-shadow: 0 14px 26px rgba(0,124,145,0.22);
+  }
+  .btn.orange{
+    background: linear-gradient(135deg, var(--orange), #ff8a3b);
+    color:white;
+    box-shadow: 0 14px 26px rgba(243,112,33,0.22);
+  }
+  .btn.dark{
+    background: linear-gradient(135deg, #111827, #374151);
+    color:white;
+    box-shadow: 0 14px 26px rgba(17,24,39,0.18);
+  }
+
+  /* Comparison */
+  .comparison{
+    margin: 18px 0 10px;
+    background: rgba(255,255,255,0.70);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    backdrop-filter: blur(6px);
+  }
+  .comparison h2{
+    margin: 0 0 10px;
+    font-size: 18px;
+    letter-spacing:-0.2px;
+  }
+  .comp-grid{
+    display:grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap:10px;
+    align-items:stretch;
+    overflow:auto;
+  }
+  .cell{
+    border: 1px solid rgba(0,0,0,0.06);
+    background: white;
+    border-radius: 14px;
+    padding: 10px 12px;
+    min-width: 180px;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .cell strong{ color: var(--text); font-weight: 950; }
+  .head{
+    background: rgba(0,124,145,0.08);
+    border-color: rgba(0,124,145,0.18);
+    color: var(--text);
+  }
+  .head.pro{
+    background: rgba(243,112,33,0.10);
+    border-color: rgba(243,112,33,0.22);
+  }
+  .head.premium{
+    background: rgba(17,24,39,0.06);
+    border-color: rgba(17,24,39,0.16);
+  }
+  .check{ color: var(--text); font-weight: 950; }
+  .x{ opacity:0.55; }
+
+  footer{
+    padding: 24px 0 40px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .footer-box{
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 16px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .legal{ max-width: 90ch; }
+  .whats{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 14px;
+    border-radius:12px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(6px);
+    font-weight:800;
+    color:var(--teal);
+  }
+</style>
+</head>
+
+<body>
+  <header class="container">
+    <div class="topbar">
+      <img class="logo" src="logo-explore-english.png" alt="Explore English logo">
+      <h1>Escolha o plano ideal para você</h1>
+      <p class="sub">
+        Você escolhe o nível de acompanhamento — o conteúdo é completo e gravado.
+        <strong>+120 aulas gravadas</strong> (A1 + A2), com apostilas e exercícios.
+      </p>
+
+      <div class="pill-row" role="list">
+        <span class="pill" role="listitem"><span class="dot"></span> +120 aulas gravadas</span>
+        <span class="pill" role="listitem"><span class="dot"></span> A1 + A2 completos</span>
+        <span class="pill" role="listitem"><span class="dot"></span> Apostilas exclusivas</span>
+        <span class="pill" role="listitem"><span class="dot"></span> Método para adultos</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="grid" aria-label="Planos">
+      <!-- BASE -->
+      <article class="card base" aria-label="Plano Curso Base">
+        <div class="bar"></div>
+        <div class="card-inner">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <div class="label">🟦 Curso Base</div>
+            <span class="tag">Escala pura</span>
+          </div>
+
+          <div class="price">R$ 497,00 à vista</div>
+          <div class="installments">ou <strong>12x de R$ 51,50</strong></div>
+
+          <ul>
+            <li><span class="highlight">+120 aulas gravadas</span> (A1 + A2)</li>
+            <li>Apostilas exclusivas (Explore English)</li>
+            <li>Exercícios práticos para fixação</li>
+            <li>Comunidade de alunos</li>
+          </ul>
+
+          <div class="note">
+            Ideal para quem quer autonomia e constância no estudo.
+          </div>
+
+          <div class="btn-row">
+            <a class="btn primary" href="https://pay.hotmart.com/D103408858I" target="_blank" rel="noopener">
+              Escolher Curso Base →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRO -->
+      <article class="card pro" aria-label="Plano Curso + Conversação">
+        <div class="bar"></div>
+        <div class="card-inner">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <div class="label">🟩 Curso + Conversação</div>
+            <span class="tag">Carro-chefe</span>
+          </div>
+
+          <div class="price">R$ 1.197,00 à vista</div>
+          <div class="installments">ou <strong>12x de R$ 123,80</strong></div>
+
+          <ul>
+            <li><span class="highlight">Tudo do Curso Base</span></li>
+            <li><span class="highlight">12 aulas de conversação em grupo</span> (turmas de até 10 alunos)</li>
+            <li>Temas guiados e feedback estratégico</li>
+          </ul>
+
+          <div class="note">
+            Aqui acontece a virada de chave da comunicação — você pratica do jeito certo.
+          </div>
+
+          <div class="btn-row">
+            <a class="btn orange" href="https://pay.hotmart.com/M103497572N" target="_blank" rel="noopener">
+              Escolher Curso + Conversação →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PREMIUM -->
+      <article class="card premium" aria-label="Plano Mentoria Profissional">
+        <div class="bar"></div>
+        <div class="card-inner">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <div class="label">🟨 Mentoria Profissional</div>
+            <span class="tag">Premium real</span>
+          </div>
+
+          <div class="price">R$ 2.497,00 à vista</div>
+          <div class="installments">ou <strong>12x de R$ 258,25</strong></div>
+
+          <ul>
+            <li><span class="highlight">+120 aulas gravadas</span> (A1 + A2)</li>
+            <li><span class="highlight">12 encontros individuais</span> (60 minutos cada)</li>
+            <li>Plano estratégico personalizado</li>
+            <li>Foco em inglês para trabalho, carreira e oportunidades</li>
+          </ul>
+
+          <div class="note">
+            Aceleração máxima com direção pessoal — para quem quer evolução com estratégia.
+          </div>
+
+          <div class="btn-row">
+            <a class="btn dark" href="https://pay.hotmart.com/M103497758F" target="_blank" rel="noopener">
+              Escolher Mentoria Profissional →
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Comparativo (didático e detalhado) -->
+    <section class="comparison" aria-label="Comparativo de planos">
+      <h2>Comparativo de planos (rápido e didático)</h2>
+
+      <div class="comp-grid" role="table" aria-label="Tabela comparativa">
+        <div class="cell head" role="columnheader"><strong>Recursos</strong></div>
+        <div class="cell head" role="columnheader"><strong>Base</strong></div>
+        <div class="cell head pro" role="columnheader"><strong>Pro</strong></div>
+        <div class="cell head premium" role="columnheader"><strong>Mentoria</strong></div>
+
+        <div class="cell" role="rowheader"><strong>+120 aulas gravadas (A1 + A2)</strong></div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+
+        <div class="cell" role="rowheader"><strong>Apostilas exclusivas</strong></div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+
+        <div class="cell" role="rowheader"><strong>Exercícios práticos</strong></div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+
+        <div class="cell" role="rowheader"><strong>Comunidade</strong></div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+        <div class="cell check">✔ Incluso</div>
+
+        <div class="cell" role="rowheader"><strong>Conversação em grupo</strong></div>
+        <div class="cell x">—</div>
+        <div class="cell check">✔ 12 aulas (até 10 alunos)</div>
+        <div class="cell x">—</div>
+
+        <div class="cell" role="rowheader"><strong>Mentoria individual</strong></div>
+        <div class="cell x">—</div>
+        <div class="cell x">—</div>
+        <div class="cell check">✔ 12 encontros (60 min)</div>
+
+        <div class="cell" role="rowheader"><strong>Foco em carreira</strong></div>
+        <div class="cell">Base</div>
+        <div class="cell">Aplicação guiada</div>
+        <div class="cell check">✔ Estratégia personalizada</div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-box container">
+        <div class="legal">
+          <strong>Transparência:</strong> as aulas de conversação seguem calendário pré-definido e são realizadas em turmas reduzidas (até 10 alunos), exclusivamente no plano Pro.
+          <br/>
+          <span style="opacity:.9">
+            Parcelamento disponível conforme condições da Hotmart.
+          </span>
+        </div>
+
+        <div style="min-width:220px">
+          <div style="font-weight:950; color:var(--text); margin-bottom:6px;">Precisa de ajuda?</div>
+          <a class="whats" href="https://api.whatsapp.com/send?phone=5527981001071" target="_blank" rel="noopener">
+            Falar no WhatsApp →
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>
